@@ -1,0 +1,43 @@
+{
+  "name": "bargein",
+  "version": "0.1.0",
+  "description": "Browser audio pipeline for realtime voice models: mic capture, gap-free playback and barge-in with sample-accurate audio_end_ms (OpenAI Realtime, Gemini Live).",
+  "keywords": ["realtime", "voice", "audio", "audioworklet", "barge-in", "openai-realtime", "gemini-live", "websocket", "pcm16"],
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/LeeGyeongPil/bargein.git" },
+  "homepage": "https://github.com/LeeGyeongPil/bargein#readme",
+  "bugs": { "url": "https://github.com/LeeGyeongPil/bargein/issues" },
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+    "./openai": { "types": "./dist/openai.d.ts", "default": "./dist/openai.js" },
+    "./gemini": { "types": "./dist/gemini.d.ts", "default": "./dist/gemini.js" },
+    "./worklets/*": "./dist/worklets/*",
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "README.md", "README.ko.md", "CHANGELOG.md", "LICENSE"],
+  "engines": { "node": ">=22.12" },
+  "publishConfig": { "access": "public" },
+  "scripts": {
+    "build:worklets": "node --disable-warning=ExperimentalWarning scripts/build-worklets.mjs",
+    "build": "npm run build:worklets && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lesson": "npm run build --silent && node examples/lesson.mjs",
+    "demo": "node demo/run.mjs",
+    "build:demo": "vite build demo --outDir ../demo-dist --emptyOutDir",
+    "smoke:pack": "node scripts/smoke-pack.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/ws": "^8.18.2",
+    "node-web-audio-api": "^2.2.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.0",
+    "ws": "^8.23.0"
+  }
+}
