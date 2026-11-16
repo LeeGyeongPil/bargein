@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>bargein demo</title>
+  <style>
+    body { font: 15px/1.5 system-ui, sans-serif; max-width: 860px; margin: 24px auto; padding: 0 16px; color: #1c2430; }
+    h1 { font-size: 20px; margin: 0 0 8px; }
+    .notice { background: #fff6dd; border: 1px solid #e8d38a; padding: 8px 12px; border-radius: 6px; }
+    .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 12px 0; }
+    input[type=text] { flex: 1; min-width: 220px; padding: 6px 8px; }
+    button { padding: 6px 12px; cursor: pointer; }
+    .bar { margin: 6px 0; }
+    .bar .label { display: flex; justify-content: space-between; font-size: 13px; }
+    .track { background: #e9edf2; height: 18px; border-radius: 4px; overflow: hidden; }
+    .fill { height: 100%; width: 0; transition: width .08s linear; }
+    #bar-received { background: #8aa4c8; } #bar-played { background: #2e9e6b; } #bar-wall { background: #d9822b; }
+    .summary { font-weight: 600; margin: 10px 0; }
+    #log { background: #0f1720; color: #cfe3ff; font: 12px/1.45 ui-monospace, monospace; padding: 10px; border-radius: 6px; height: 220px; overflow: auto; white-space: pre-wrap; }
+    fieldset { border: 1px solid #ccd3dc; border-radius: 6px; margin-top: 16px; }
+    .status { font-size: 13px; color: #55606e; }
+  </style>
+</head>
+<body>
+  <div class="row"><h1 data-i18n="title"></h1>
+    <label style="margin-left:auto"><span data-i18n="language"></span>
+      <select id="lang"><option value="en">English</option><option value="ko">한국어</option></select></label></div>
+  <p class="notice" data-i18n="mockNotice"></p>
+  <div class="row">
+    <label data-i18n="wsUrl"></label>
+    <input id="url" type="text" value="ws://127.0.0.1:8787">
+    <button id="connect" data-i18n="connect"></button>
+    <span id="status" class="status"></span>
+  </div>
+  <div class="row">
+    <button id="play" data-i18n="play" disabled></button>
+    <button id="interrupt" data-i18n="interrupt" disabled></button>
+    <label><input id="stall" type="checkbox" checked> <span data-i18n="stallToggle"></span></label>
+  </div>
+  <div class="bar"><div class="label"><span data-i18n="barReceived"></span><b id="val-received">0</b></div><div class="track"><div class="fill" id="bar-received"></div></div></div>
+  <div class="bar"><div class="label"><span data-i18n="barPlayed"></span><b id="val-played">0</b></div><div class="track"><div class="fill" id="bar-played"></div></div></div>
+  <div class="bar"><div class="label"><span data-i18n="barWall"></span><b id="val-wall">0</b></div><div class="track"><div class="fill" id="bar-wall"></div></div></div>
+  <div class="summary" id="summary"></div>
+  <h2 style="font-size:16px" data-i18n="log"></h2>
+  <div id="log"></div>
+  <fieldset><legend data-i18n="octaveTitle"></legend>
+    <button id="octave" data-i18n="octaveRun"></button>
+    <div><span data-i18n="octaveWrong"></span>: <b id="octave-wrong">-</b></div>
+    <div><span data-i18n="octaveRight"></span>: <b id="octave-right">-</b></div>
+  </fieldset>
+  <script type="module" src="./main.ts"></script>
+</body>
+</html>
