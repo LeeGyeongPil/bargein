@@ -22,6 +22,10 @@ $('lang').addEventListener('change', (e) => {
 });
 applyLang();
 
+// demo/run.mjs passes the real mock server address; a static build has no value and keeps the HTML default.
+const mockUrl = (import.meta as unknown as { env?: Record<string, string | undefined> }).env?.VITE_BARGEIN_MOCK_URL;
+if (mockUrl) ($('url') as HTMLInputElement).value = mockUrl;
+
 const logBox = $('log');
 function log(dir: 'sent' | 'received', ev: unknown): void {
   const copy = JSON.parse(JSON.stringify(ev));

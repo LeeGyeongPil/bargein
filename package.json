@@ -1,6 +1,6 @@
 {
   "name": "bargein",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Browser audio pipeline for realtime voice models: mic capture, gap-free playback and barge-in with sample-accurate audio_end_ms (OpenAI Realtime, Gemini Live).",
   "keywords": ["realtime", "voice", "audio", "audioworklet", "barge-in", "openai-realtime", "gemini-live", "websocket", "pcm16"],
   "license": "MIT",

@@ -6,6 +6,8 @@ import { startMockServer } from '../mock/server.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const mock = await startMockServer();
+// Vite exposes VITE_* env vars to the page, so the URL input follows BARGEIN_MOCK_PORT.
+process.env.VITE_BARGEIN_MOCK_URL = mock.url;
 const vite = await createServer({ root, server: { host: '127.0.0.1', open: false } });
 await vite.listen();
 console.log(`practice mock server (not the real service): ${mock.url}`);
