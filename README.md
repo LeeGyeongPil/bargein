@@ -164,7 +164,7 @@ Transcript limit: `conversation.item.truncate` fixes what the model remembers he
 - **Voice sounds an octave too high or low**: the buffer sample rate does not match the data. Create the player with the right `sourceRate` (24000, or 8000 for G.711). The demo page has an "octave bug check".
 - **Mic fails in Firefox with a sample-rate mismatch error**: do not force `new AudioContext({ sampleRate: 24000 })`. Keep the device rate; bargein resamples inside the worklet.
 - **`npm run lesson` timing differs by a few ms**: it uses a real render thread; the numbers are not exactly repeatable.
-- **`EADDRINUSE` on port 8787**: another process uses the mock server port. Set `BARGEIN_MOCK_PORT` to a free port and run again.
+- **`EADDRINUSE` on port 8787**: another process uses the mock server port. Set `BARGEIN_MOCK_PORT` to a free port and run again. The demo page follows `BARGEIN_MOCK_PORT` automatically; if you started the mock server separately, change the URL field to its address.
 
 ## Versions and compatibility
 
